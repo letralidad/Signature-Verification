@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Signature Verification</string>
+    <string name="home_background">Home Background</string>
+    <string name="logo">logo</string>
+    <string name="add_a_signature">Add a Signature?</string>
+    <string name="verify_a_signature">Verify a Signature?</string>
+    <string name="need_help">need help?</string>
+    <string name="by_continuing_you_agree_to_terms_nbsp_conditions">By continuing you agree to Terms &amp; Conditions</string>
+    <string name="next">NEXT</string>
+    <string name="pencil_icon">Pencil Icon</string>
+    <string name="enter_your_signature">Enter your signature</string>
+    <string name="makesure">Make sure you sign your signature \n in your best penmanship</string>
+</resources>
