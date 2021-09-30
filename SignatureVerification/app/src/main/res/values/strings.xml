@@ -10,4 +10,6 @@
     <string name="pencil_icon">Pencil Icon</string>
     <string name="enter_your_signature">Enter your signature</string>
     <string name="makesure">Make sure you sign your signature \n in your best penmanship</string>
+    <string name="save">save</string>
+    <string name="clear">clear</string>
 </resources>
