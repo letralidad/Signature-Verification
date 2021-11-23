@@ -14,4 +14,13 @@
     <string name="clear">clear</string>
     <string name="verify">verify</string>
     <string name="capture">capture</string>
+    <string name="verify_a_signature_1">Verify A Signature</string>
+    <string name="make_sure_in_verify_a_signature">Make sure the entire name you\'ve selected and the signature you\'ve presented are same!</string>
+    <string name="enter_your_personal_details">Enter your personal details</string>
+    <string name="first_name"><i>First Name</i></string>
+    <string name="fill_up_the_blanks_with_your_truthful_response_to_the_following_question">Fill up the blanks with your truthful response to the following question!</string>
+    <string name="last_name"><i>Last Name</i></string>
+    <string name="department"><i>Department</i></string>
+    <string name="submit">Submit</string>
+    <string name="error">Error</string>
 </resources>

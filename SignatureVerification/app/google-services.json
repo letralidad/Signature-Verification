@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "200321873908",
+    "project_id": "signature-verification-f787b",
+    "storage_bucket": "signature-verification-f787b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200321873908:android:4c4dcc92a17a91c0e86ba1",
+        "android_client_info": {
+          "package_name": "com.tnightmares.signatureverification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200321873908-g846lm0lpqu11stj71u3fa91b8ek336n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRp6JzjaJE54pp34rGL9d-A3ix8fsM0co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "200321873908-g846lm0lpqu11stj71u3fa91b8ek336n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

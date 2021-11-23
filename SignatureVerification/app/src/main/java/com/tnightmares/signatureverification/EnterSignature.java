@@ -1,23 +1,30 @@
 package com.tnightmares.signatureverification;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.kyanogen.signatureview.SignatureView;
 
-public class EnterSignature extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
-    CardView next, save, clear;
-    LinearLayout title;
-    ConstraintLayout forSignature;
-    SignatureView signatureCanvas;
+public class EnterSignature extends AppCompatActivity {
+
+    CardView next, intent2;
+    private final int REQUEST_CODE = 1024;
+    private final int REQUEST_CODE2 = 2048;
+    private ArrayList<String> intentBitmap = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,39 +32,36 @@ public class EnterSignature extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_enter_signature);
 
         next = (CardView) findViewById(R.id.next);
-        save = (CardView) findViewById(R.id.save);
-        clear = (CardView) findViewById(R.id.clear);
+        intent2 = (CardView) findViewById(R.id.intent2);
 
-        title = findViewById(R.id.title);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        forSignature = findViewById(R.id.forSignature);
+                Intent intent = new Intent(EnterSignature.this, UserSignature.class);
+                startActivity(intent);
+//                startActivityForResult(intent, REQUEST_CODE);
+//                finish();
+            }
+        });
 
-        signatureCanvas = findViewById(R.id.signatureCanvas);
-
-
-        next.setOnClickListener(this);
-        save.setOnClickListener(this);
-        clear.setOnClickListener(this);
+//        intent2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(EnterSignature.this, NewSigEnterDetails.class);
+//                startActivity(intent);
+//
+//            }
+//        });
 
     }
 
     @Override
-    public void onClick(View v) {
-        Intent i;
-        switch (v.getId()){
-            case R.id.next:
-                title.setVisibility(View.GONE);
-                forSignature.setVisibility(View.VISIBLE);
-                break;
-            case R.id.save:
-                Log.d("TAG", "onClick: save");
-                break;
-            case R.id.clear:
-                signatureCanvas.clearCanvas();
-                break;
-            default:
-                Log.d("TAG", "onClick: this is default");
-                break;
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            intentBitmap = data.getExtras().getStringArrayList ("list");
         }
     }
+
 }

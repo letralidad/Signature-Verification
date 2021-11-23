@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tnightmares.signatureverification">
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
 
-    <uses-feature android:name="android.hardware.camera.autofocus" android:required="true"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,24 +17,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SignatureVerification">
+        <activity android:name=".NewSigDetails"></activity>
+
         <provider
-            android:authorities="com.tnightmares.signatureverification.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.tnightmares.signatureverification.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/fileprovider"/>
+                android:resource="@xml/fileprovider" />
         </provider>
-        <activity android:name=".SignatureVerification"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EnterSignature"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Home"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
 
+        <activity
+            android:name=".UserSignature"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".SignatureVerification"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EnterSignature"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
