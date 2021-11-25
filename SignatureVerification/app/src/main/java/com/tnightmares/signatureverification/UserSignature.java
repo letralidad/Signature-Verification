@@ -66,9 +66,7 @@ public class UserSignature extends AppCompatActivity implements View.OnClickList
                     break;
                 }
             case R.id.save:
-                intent = new Intent(this, NewSigDetails.class);
-                intent.putStringArrayListExtra("list", arrayList);
-                startActivity(intent);
+
                 if(!signatureCanvas.isBitmapEmpty()) {
                     getStringImage(bitmap);
 //                    Intent intent = getIntent();
@@ -79,7 +77,9 @@ public class UserSignature extends AppCompatActivity implements View.OnClickList
                 } else {
                     break;
                 }
-
+                intent = new Intent(this, NewSigDetails.class);
+                intent.putStringArrayListExtra("list", arrayList);
+                startActivity(intent);
                 break;
             default:
                 break;
@@ -90,7 +90,7 @@ public class UserSignature extends AppCompatActivity implements View.OnClickList
 
     public void getStringImage(Bitmap bitmap){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
         byte[] imageBytes = baos.toByteArray();
 

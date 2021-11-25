@@ -36,10 +36,8 @@ android {
                 install "opencv-python"
                 install "keras"
                 install "scikit-learn"
-                install "matplotlib"
-                install "pandas"
-                install "sympy"
-                install "nose"
+                install "Pillow"
+                install "tensorflow"
             }
 
             pyc {
