@@ -5,14 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.PrecomputedText;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +38,7 @@ public class NewSigDetails extends AppCompatActivity {
 
     EditText fName, lName, dept;
     CardView submit;
+    ImageView imageView;
     private ArrayList<String> arrayList = new ArrayList<String>();
 
 //    FirebaseAuth fAuth;
@@ -42,14 +51,22 @@ public class NewSigDetails extends AppCompatActivity {
 
         rootNode = FirebaseFirestore.getInstance();
 
+        //intent
         Intent intent = getIntent();
         arrayList = intent.getExtras().getStringArrayList ("list");
         Log.d("TAG", "onCreate: " + arrayList );
+        Log.d("TAG", "onCreate: " + arrayList.size());
 
+        //Python
+        if(!Python.isStarted())
+            Python.start(new AndroidPlatform(this));
+
+        final Python py = Python.getInstance();
 
         fName = findViewById(R.id.fName);
         lName = findViewById(R.id.lName);
         dept = findViewById(R.id.dept);
+        imageView = findViewById(R.id.imageConverted);
 
 
         submit = findViewById(R.id.submit);
@@ -73,6 +90,25 @@ public class NewSigDetails extends AppCompatActivity {
                     dept.setError("Department is Required!");
                     return;
                 }
+
+                //Calling the object inside the python file
+                PyObject pyo = py.getModule("Caller");
+                PyObject obj = pyo.callAttr("new_signature", arrayList.get(0), arrayList.get(1), arrayList.get(2), uniqueID+".mat");
+
+// to be deleted for testing only
+                //get the returned value of PyObject obj
+                String str = obj.toString();
+
+                //convert to byte array
+                byte data[] =android.util.Base64.decode(str, Base64.DEFAULT);
+
+                Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+                imageView.setImageBitmap(bmp);
+
+
+
+
+// to be deleted for testing only
 
                 //userID = fAuth.getCurrentUser().getUid();
                 DocumentReference documentReference = rootNode.collection("Users").document(uniqueID);

@@ -2,9 +2,10 @@ from PIL import Image
 from PIL.ImageOps import invert
 import numpy as np
 
-from keras.models import load_model, Model
-from keras import backend as K
-from keras.preprocessing import image
+from tensorflow import keras #needed
+from tensorflow.keras.models import load_model, Model
+from tensorflow.keras import backend as K
+from tensorflow.keras.preprocessing import image
 
 
 def preprocessing(image_file):

@@ -141,6 +141,10 @@
                 android:textSize="18sp"
                 android:textAllCaps="true"/>
         </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/imageConverted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
