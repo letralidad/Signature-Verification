@@ -10,7 +10,13 @@ import java.util.ArrayList;
 
 public class bitmapGetSet {
 
-    public String getStringImage(Bitmap bitmap){
+    String[] signatureBitmap = new String[3];
+
+    public String getSignatureBitmap(int i){
+        return null;
+    }
+
+    public void getStringImage(Bitmap bitmap, int i){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
 
@@ -18,6 +24,9 @@ public class bitmapGetSet {
 
         String encodeImage = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
-        return encodeImage;
+        signatureBitmap[i] = encodeImage;
+        Log.d("TAG", "getStringImage: " + signatureBitmap[i]);
+//        return encodeImage;
     }
+
 }
